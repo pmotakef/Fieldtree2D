@@ -1,0 +1,43 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27130.2003
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "fieldtree", "fieldtree\fieldtree.csproj", "{6DC8A87B-8BC9-4382-AB13-26BBB65921AE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FieldTreeJS", "FieldTreeJS\FieldTreeJS.csproj", "{B185868D-58F4-4B27-8666-3E328CF5323F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FieldTreeStructure", "FieldTreeStructure\FieldTreeStructure.csproj", "{D83EDA08-1980-4C5F-84F8-7956422E2A4E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FieldTreeStructureTest", "FieldTreeStructureTest\FieldTreeStructureTest.csproj", "{3AA2F55A-B258-4CFE-87A7-B6A68AC78956}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6DC8A87B-8BC9-4382-AB13-26BBB65921AE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6DC8A87B-8BC9-4382-AB13-26BBB65921AE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6DC8A87B-8BC9-4382-AB13-26BBB65921AE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6DC8A87B-8BC9-4382-AB13-26BBB65921AE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B185868D-58F4-4B27-8666-3E328CF5323F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B185868D-58F4-4B27-8666-3E328CF5323F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B185868D-58F4-4B27-8666-3E328CF5323F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B185868D-58F4-4B27-8666-3E328CF5323F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D83EDA08-1980-4C5F-84F8-7956422E2A4E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D83EDA08-1980-4C5F-84F8-7956422E2A4E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D83EDA08-1980-4C5F-84F8-7956422E2A4E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D83EDA08-1980-4C5F-84F8-7956422E2A4E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3AA2F55A-B258-4CFE-87A7-B6A68AC78956}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3AA2F55A-B258-4CFE-87A7-B6A68AC78956}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3AA2F55A-B258-4CFE-87A7-B6A68AC78956}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3AA2F55A-B258-4CFE-87A7-B6A68AC78956}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {74B96879-2D3F-4F44-9A65-CE0443DABB14}
+	EndGlobalSection
+EndGlobal
