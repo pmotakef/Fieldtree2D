@@ -265,3 +265,5 @@ __pycache__/
 /TestResults/
 /packages/
 
+*.nuspec
+nuget.exe

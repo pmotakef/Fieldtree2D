@@ -222,6 +222,34 @@ namespace FieldTreeStructureTest
             Assert.AreEqual(coverFieldTree.IsEmpty(), true);
         }
 
+        [TestMethod]
+        public void TestCount()
+        {
+            CoverFieldTree<Rect> coverFieldTree = new CoverFieldTree<Rect>(16, 16, 0.3, 0, 0, 1);
+            List<Rect> rects = new List<Rect>()
+            {
+                new Rect(new Point(1, 1), new Size(1, 1)),
+                new Rect(new Point(3, 3), new Size(1, 1)),
+                new Rect(new Point(-3, 2), new Size(1, 1)),
+                new Rect(new Point(-1, 0), new Size(1, 1)),
+                new Rect(new Point(-2, -2), new Size(1, 1)),
+                new Rect(new Point(2, -2), new Size(1, 1)),
+                new Rect(new Point(3, -3), new Size(1, 1))
+            };
+            coverFieldTree.AddMany(rects);
+            Assert.AreEqual(coverFieldTree.Count(), 7);
+
+            int totalNum = 7;
+
+            foreach (var item in rects)
+            {
+                coverFieldTree.Remove(item);
+                totalNum -= 1;
+                Assert.AreEqual(coverFieldTree.Count(), totalNum);
+            }
+            Assert.AreEqual(coverFieldTree.IsEmpty(), true);
+        }
+
     }
 
 
@@ -408,6 +436,34 @@ namespace FieldTreeStructureTest
             foreach (var item in rects)
             {
                 fieldTree.Remove(item);
+            }
+            Assert.AreEqual(fieldTree.IsEmpty(), true);
+        }
+
+        [TestMethod]
+        public void TestCount()
+        {
+            PartitionFieldTree<Rect> fieldTree = new PartitionFieldTree<Rect>(16, 16, 0, 0, 1);
+            List<Rect> rects = new List<Rect>()
+            {
+                new Rect(new Point(1, 1), new Size(1, 1)),
+                new Rect(new Point(3, 3), new Size(1, 1)),
+                new Rect(new Point(-3, 2), new Size(1, 1)),
+                new Rect(new Point(-1, 0), new Size(1, 1)),
+                new Rect(new Point(-2, -2), new Size(1, 1)),
+                new Rect(new Point(2, -2), new Size(1, 1)),
+                new Rect(new Point(3, -3), new Size(1, 1))
+            };
+            fieldTree.AddMany(rects);
+            Assert.AreEqual(fieldTree.Count(), 7);
+
+            int totalNum = 7;
+
+            foreach (var item in rects)
+            {
+                fieldTree.Remove(item);
+                totalNum -= 1;
+                Assert.AreEqual(fieldTree.Count(), totalNum);
             }
             Assert.AreEqual(fieldTree.IsEmpty(), true);
         }

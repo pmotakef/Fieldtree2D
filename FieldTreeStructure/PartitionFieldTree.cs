@@ -163,5 +163,13 @@ namespace FieldTreeStructure
             return RangeQuery(Center.X, Center.Y, size.Width, size.Height);
         }
 
+        /// <summary>
+        /// Total number of objects saved in the structure
+        /// </summary>
+        /// <returns>Total number of objects</returns>
+        public int Count()
+        {
+            return fieldTree.Count;
+        }
     }
 }

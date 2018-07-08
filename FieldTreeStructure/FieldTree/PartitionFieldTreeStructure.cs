@@ -102,6 +102,8 @@ namespace FieldTreeStructure.FieldTree
         private SimplePriorityQueue<NodeOrObj> incrNN_queue;
         private Point incrNN_origin;
 
+        public int Count { get; set; }
+
         public PartitionFieldTreeStructure(Rectangle bounds, int capacity)
         {
             Bounds = bounds;
@@ -136,6 +138,10 @@ namespace FieldTreeStructure.FieldTree
             else
             {
                 bool overflown = deepest_field.StoreRectangle(rect);
+            }
+            if (deepest_field != null)
+            {
+                Count += 1;
             }
             return (deepest_field);
         }
@@ -218,7 +224,10 @@ namespace FieldTreeStructure.FieldTree
 
         private SpatialObj<T> RemoveRectangle(SpatialObj<T> rect, PartitionNode<T> node)
         {
-            node.DeleteRectangle(rect);
+            if (node.DeleteRectangle(rect))
+            {
+                Count -= 1;
+            }
             MergeEmptyChildren(node);
             return rect;
         }

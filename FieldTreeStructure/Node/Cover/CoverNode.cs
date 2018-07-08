@@ -1,13 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using FieldTreeStructure.Geometry;
 using FieldTreeStructure.Spatial;
-using FieldTreeStructure.Utilities;
 
 namespace FieldTreeStructure.Node.Cover
 {
-    public class CoverNode<T> : IEquatable<CoverNode<T>> where T : ISpatial
+    public class CoverNode<T> : AbstractNode<T>, IEquatable<CoverNode<T>> where T : ISpatial
     {
         /*      Childern Positions
         *      ---------------------------------
@@ -23,12 +21,6 @@ namespace FieldTreeStructure.Node.Cover
         protected List<CoverNode<T>> Children = new List<CoverNode<T>>();
         protected CoverNode<T> Parent;
 
-        protected int Capacity;
-        protected int LayerNum;
-
-        protected List<SpatialObj<T>> StoredObjs = new List<SpatialObj<T>>();
-        protected List<SpatialObj<T>> OverflowObjs = new List<SpatialObj<T>>();
-
         public CoverNode(Rectangle bounds, int capacity, int layer, double p_value, CoverNode<T> parent)
         {
             ActualBounds = bounds;
@@ -42,19 +34,6 @@ namespace FieldTreeStructure.Node.Cover
         public bool Equals(CoverNode<T> other)
         {
             return (LayerNum == other.LayerNum && ActualBounds.Equals(other.ActualBounds));
-        }
-
-        public List<SpatialObj<T>> GetAllObjects()
-        {
-            List<SpatialObj<T>> allObjs = new List<SpatialObj<T>>(StoredObjs);
-            allObjs.AddRange(OverflowObjs);
-            return allObjs;
-        }
-
-        public void Clear()
-        {
-            OverflowObjs.Clear();
-            StoredObjs.Clear();
         }
 
         public List<CoverNode<T>> GetChildren()
@@ -72,117 +51,9 @@ namespace FieldTreeStructure.Node.Cover
             return Parent;
         }
         
-        public int Count()
-        {
-            return (StoredObjs.Count + OverflowObjs.Count);
-        }
-
-        public bool IsFull()
-        {
-            return (Count() >= Capacity);
-        }
-
-        public bool IsEmpty()
-        {
-            return (Count() == 0);
-        }
-
-        public bool IsOverflown()
-        {
-            return (OverflowObjs.Count > 0);
-        }
-
-        public bool IsRootNode()
+        public override bool IsRootNode()
         {
             return (Parent == null);
-        }
-
-        public bool IsPointInNode(Point p)
-        {
-            return ActualBounds.ContainsPoint(p);
-        }
-
-        public bool IntersectsWith(Rectangle rectangle)
-        {
-            return OperatingBounds.IntersectsWith(rectangle);
-        }
-
-        public bool IntersectsWith(Point center, int rad)
-        {
-            return OperatingBounds.IntersectsCircle(center, rad);
-        }
-
-        public double GetDistanceToPointSq(Point p)
-        {
-            return OperatingBounds.GetDistanceSqToPoint(p);
-        }
-
-        public bool IsObjectInNode(SpatialObj<T> obj)
-        {
-            return OperatingBounds.ContainsRect(obj.boundingBox);
-        }
-
-        public int GetMaxDistance()
-        {
-            return OperatingBounds.Width + OperatingBounds.Height;
-        }
-
-        public List<SpatialObj<T>> GetOverflowObjs()
-        {
-            return OverflowObjs;
-        }
-
-        public bool CanSink(SpatialObj<T> rect)
-        {
-            return (rect.boundingBox.Width <= OperatingBounds.Width / 2) && (rect.boundingBox.Height <= OperatingBounds.Height / 2) && 
-                Math.Min(ActualBounds.Height, ActualBounds.Width) > 1;
-        }
-
-        public bool StoreRectangle(SpatialObj<T> rect)
-        {
-            if (CanSink(rect))
-            {
-                OverflowObjs.Add(rect);
-            }
-            else
-            {
-                StoredObjs.Add(rect);
-            }
-            return (IsOverflown());
-        }
-
-        public bool DeleteRectangle(SpatialObj<T> rect, bool overflow_only = false)
-        {
-            if (!overflow_only)
-            {
-                StoredObjs.RemoveAll(x => x.objInstance.Equals(rect.objInstance));
-            }
-            OverflowObjs.RemoveAll(x => x.objInstance.Equals(rect.objInstance));
-            return IsOverflown();
-        }
-
-        public bool DeleteRectangles(List<SpatialObj<T>> rects, bool overflow_only = false)
-        {
-            foreach (SpatialObj<T> rect in rects)
-            {
-                DeleteRectangle(rect, overflow_only);
-            }
-            return IsOverflown();
-        }
-
-        public List<SpatialObj<T>> GetRangeQueryObj(Point c, int r)
-        {
-            return GetAllObjects().Where(x => x.boundingBox.ContainedByCircle(c, r)).ToList();
-        }
-
-        public List<SpatialObj<T>> GetRangeQueryObj(Rectangle window)
-        {
-            return GetAllObjects().Where(x => x.boundingBox.ContainedByRect(window)).ToList();
-        }
-
-        public Dictionary<SpatialObj<T>, double> GetNearestRectangle(Point p)
-        {
-            return Utils.MinOrUpperBound(GetAllObjects(), x => x.boundingBox.GetDistanceSqToPoint(p), Statics.EPSILON);
         }
 
         public void CreateChildren()
@@ -224,6 +95,16 @@ namespace FieldTreeStructure.Node.Cover
                 }
             }
             return true;
+        }
+
+        public override Rectangle GetActualBounds()
+        {
+            return ActualBounds;
+        }
+
+        public override Rectangle GetOperatingBounds()
+        {
+            return OperatingBounds;
         }
     }
 }

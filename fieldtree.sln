@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27130.2003
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "fieldtree", "fieldtree\fieldtree.csproj", "{6DC8A87B-8BC9-4382-AB13-26BBB65921AE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FieldtreeDemo", "fieldtree\FieldtreeDemo.csproj", "{6DC8A87B-8BC9-4382-AB13-26BBB65921AE}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FieldTreeJS", "FieldTreeJS\FieldTreeJS.csproj", "{B185868D-58F4-4B27-8666-3E328CF5323F}"
 EndProject
