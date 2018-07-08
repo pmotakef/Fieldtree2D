@@ -18,7 +18,10 @@ In Partition Fieldtree, the children are created by shifting them by 1/2 their s
 The supported objects for storage in the data structure need to implement `ISpatial` interface:
 
   `using FieldTreeStructure.Spatial;`
+  
   `public class Rect : ISpatial {}`
+
+When implementing `ISpatial` please note that currently Bounding Box supports only `int` for faster performance.
 
 Then data structre can be initialized using
 
@@ -30,9 +33,9 @@ or
   
 Objects can be added to the data structure using `Add` or `AddMany`. Objects can be removed using `Remove` or `PopNearestObject` where the latter finds the object closest to the specified query point and pops it. 
 
-Point Query without deletion can be performed using `FindNearestObjects`.
+Point Query without deletion can be performed using `FindNearestObjects`. Note: if query point intersects with multiple objects (i.e. the distance to query point is zero) then all those objects are returned. Therefore the returned list can have 1 object (closet object) if query point does not intersect with any object, or >= 1 members for intersecting objects.
 
-Range Query can be performed using `RangeQuery` for circular or rectangular sections.
+Range Query can be performed using `RangeQuery` for circular or rectangular regions.
 
 To retrieve all object `All` can be used.
 
