@@ -43,10 +43,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ButtomUpCoverFieldTree.cs" />
     <Compile Include="CoverFieldTree.cs" />
+    <Compile Include="FieldTree\ButtomUpCoverFieldTreeStructure.cs" />
     <Compile Include="FieldTree\CoverFieldTreeStructure.cs" />
     <Compile Include="FieldTree\PartitionFieldTreeStructure.cs" />
     <Compile Include="Node\AbstractNode.cs" />
+    <Compile Include="Node\Cover\BUCoverNode.cs" />
     <Compile Include="Node\Cover\CoverNode.cs" />
     <Compile Include="Node\Partition\PartitionNode.cs" />
     <Compile Include="PartitionFieldTree.cs" />
