@@ -93,7 +93,11 @@ namespace FieldTreeStructure.Geometry
         {
             Point minExt = GetTwiceMinExtent();
             Point maxExt = GetTwiceMaxExtent();
-            return string.Format("({0:0.0}, {1:0.0}) - ({2:0.0}, {3:0.0})", minExt.X / 2.0f, minExt.Y / 2.0f, maxExt.X / 2.0f, maxExt.Y / 2.0f);
+            if (Math.Abs(minExt.X % 2) != 0 || Math.Abs(minExt.Y % 2) != 0 || Math.Abs(maxExt.X % 2) != 0 || Math.Abs(maxExt.Y % 2) != 0)
+            {
+                return string.Format("({0:0.0}, {1:0.0}) - ({2:0.0}, {3:0.0})", minExt.X / 2.0f, minExt.Y / 2.0f, maxExt.X / 2.0f, maxExt.Y / 2.0f);
+            }
+            return string.Format("({0}, {1}) - ({2}, {3})", minExt.X / 2, minExt.Y / 2, maxExt.X / 2, maxExt.Y / 2);
         }
 
         public bool ContainsRect(Rectangle other)
@@ -155,6 +159,5 @@ namespace FieldTreeStructure.Geometry
         {
             return IntersectionCheck(this, other);
         }
-
     }
 }
