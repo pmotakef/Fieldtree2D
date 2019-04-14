@@ -528,7 +528,14 @@ namespace FieldTreeStructureTest
             Assert.AreEqual(rect.IntersectsWith(new Rectangle(new Point(0, 6), new Size(2, 2))), false);
         }
 
-
+        [TestMethod]
+        public void RectangleToString()
+        {
+            Rectangle rect = new Rectangle(new Point(5, 5), new Size(1, 1));
+            Assert.AreEqual(rect.ToString(), "(4.5, 4.5) - (5.5, 5.5)");
+            rect = new Rectangle(new Point(5, 5), new Size(2, 2));
+            Assert.AreEqual(rect.ToString(), "(4.0, 4.0) - (6.0, 6.0)");
+        }
     }
 
 }
