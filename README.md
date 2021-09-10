@@ -2,10 +2,10 @@
 Cover (loose) fieldtree and Partition fieldtree structures for 2D geometries for .Net.
 
 # Installation
-Nuget package is uploaded to: https://www.nuget.org/packages/FieldTree2D/1.1.0
+Nuget package is uploaded to: https://www.nuget.org/packages/FieldTree2D/2.0.0
 The package can be installed by using following command:
 
-   `Install-Package FieldTree2D -Version 1.1.0`
+   `Install-Package FieldTree2D -Version 2.0.0`
 
 # Introduction
 Cover Fieldtree and Partition Fieldtree are designed for efficient storage of 2D spatial objects (such as rectangles, circles, ...).
@@ -14,12 +14,16 @@ Cover (loose) field tree is similar to MX-Quadtree or PR-Quadtree, where each no
 
 In Partition Fieldtree, the children are created by shifting them by 1/2 their size both in X and Y direction. In this scenario each node can have 9 children and up to 4 parents (possible number of parents are 1 for center node, 2 for edge nodes, and 4 for corner nodes).This dependency causes more computation during adding children and merging them (upon delete), while give the most effiecient storage and find operations. 
 
+New in 2.0.0:
+Updated to be compatible with .Net 6.0.
+Fixed the typo in Bottom up cover field tree.
+
 New in 1.1.0:
-Goodbye to fixed sizes: Added Buttom up Cover Field Tree. The bottom up cover field tree doesn't need to know a predefined root size. Initially when the tree is empty there is no node. As the first object is added to the tree, tree finds a square encapsulating node where the size is the first power of 2 greater than the object size. This node becomes the root. When another object is added which does not fit in the root node, the structure creates a parent of the old root, which becomes the new root node, and then creates all the children, i.e. siblings of the previous root node. This new design allows the tree to grow from buttom (children) and top (parent), which is ideal for scenarios where the size of the canvas is not predefined. 
+Goodbye to fixed sizes: Added Bottom up Cover Field Tree. The bottom up cover field tree doesn't need to know a predefined root size. Initially when the tree is empty there is no node. As the first object is added to the tree, tree finds a square encapsulating node where the size is the first power of 2 greater than the object size. This node becomes the root. When another object is added which does not fit in the root node, the structure creates a parent of the old root, which becomes the new root node, and then creates all the children, i.e. siblings of the previous root node. This new design allows the tree to grow from bottom (children) and top (parent), which is ideal for scenarios where the size of the canvas is not predefined. 
 
 To use this new structure use:
 
-`ButtomUpCoverFieldTree<Rect> fieldTree = new ButtomUpCoverFieldTree<Rect>(p_value, [optional_node_capacity=2]);`
+`BottomUpCoverFieldTree<Rect> fieldTree = new BottomUpCoverFieldTree<Rect>(p_value, [optional_node_capacity=2]);`
 
 # Usage
 The supported objects for storage in the data structure need to implement `ISpatial` interface:
