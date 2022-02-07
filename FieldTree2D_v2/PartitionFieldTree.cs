@@ -4,7 +4,7 @@ using FieldTree2D_v2.FieldTree;
 
 namespace FieldTree2D_v2
 {
-    public class PartitionFieldTree<T> where T : ISpatial, new()
+    public class PartitionFieldTree<T> where T : ISpatial
     {
 
         private PartitionFieldTreeStructure<T> fieldTree;
