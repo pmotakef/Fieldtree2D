@@ -4,7 +4,7 @@
     <TargetFramework>net6.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>true</ImplicitUsings>
-    <Version>2.0.0</Version>
+    <Version>2.1.0</Version>
     <Authors>Pouya Motakef</Authors>
     <Product>FieldTree2D</Product>
     <Description>Cover (loose) fieldtree and Partition fieldtree structures for 2D geometries for .Net.</Description>
@@ -13,7 +13,7 @@
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <RepositoryUrl>https://github.com/pmotakef/Fieldtree2D</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
-    <PackageReleaseNotes>Updated to be compatible with .Net 6.0.</PackageReleaseNotes>
+    <PackageReleaseNotes>Updated to be compatible with .Net 6.0. Removed Constrain on default constructor (Thanks to AliveDevil for the contribution).</PackageReleaseNotes>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <PackageId>FieldTree2D</PackageId>
