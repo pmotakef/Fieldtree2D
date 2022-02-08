@@ -4,7 +4,7 @@ using FieldTree2D_v2.Geometry;
 
 namespace FieldTree2D_v2
 {
-    public class CoverFieldTree<T> where T : ISpatial, new()
+    public class CoverFieldTree<T> where T : ISpatial
     {
         private CoverFieldTreeStructure<T> fieldTree;
         private Size size;

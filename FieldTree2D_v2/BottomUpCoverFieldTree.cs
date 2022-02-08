@@ -4,7 +4,7 @@ using FieldTree2D_v2.FieldTree;
 
 namespace FieldTree2D_v2
 {
-    public class BottomUpCoverFieldTree<T> where T : ISpatial, new()
+    public class BottomUpCoverFieldTree<T> where T : ISpatial
     {
         private BottomUpCoverFieldTreeStructure<T> fieldTree;
         //private Size size;
